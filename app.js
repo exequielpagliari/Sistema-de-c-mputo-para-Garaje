@@ -3,11 +3,12 @@
 y ubicación para determinar; al momento de la extracción del mismo,
 el monto total, tomando en cuenta la salida del rodado.*/
 
-function Auto(tipo, patente, marca, modelo) {
+function Auto(tipo, patente, marca, modelo, tiempo) {
     this.tipo = tipo,
         this.patente = patente,
         this.marca = marca,
         this.modelo = modelo
+        this.tiempo = tiempo
 
 }
 
@@ -22,22 +23,22 @@ var estacionamiento = {
     },
     agregarAuto() {
         const form = document.getElementsByTagName("form")[0];
-        console.log(form[0])
         espacio = form[0].value
         tipo = form[1].value
         patente = form[2].value
         marca = form[3].value
         modelo = form[4].value
-        espacio = new Auto(tipo, patente, marca, modelo)
-        this.espacios[espacio] = espacio
-        console.log(espacio)
-        console.log(this.espacios)
+        tiempo = new Date();
+        this.espacios[espacio] = new Auto(tipo, patente, marca, modelo, tiempo)
+
+        console.log(this.espacios[0])
     }
 }
 
+estacionamiento.inicioarray()
 var monto = 1;
 var date = new Date();
-console.log(estacionamiento.espacios)
+
 
 
 
