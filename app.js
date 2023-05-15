@@ -1,96 +1,59 @@
-let date, horas, minutos, segundos, diaactual, mesactual, añoactual;
-let espacios = [];
-let vehiculos = []
-let auto = [];
-let cantidadespacios = 20
-let datosdevículos = cantidadespacios * 7;
-date = new Date();
-horas = date.getUTCHours() - 3; 
-minutos = date.getUTCMinutes();
-segundos = date.getUTCSeconds();
-diaactual = date.getDay();
-mesactual = date.getMonth();
-añoactual = date.getFullYear();
 
+/* Se tomará marca, patente, momento de aparcamiento
+y ubicación para determinar; al momento de la extracción del mismo,
+el monto total, tomando en cuenta la salida del rodado.*/
 
-for (let index = 0; index < datosdevículos; index++) {
-    espacios.push(0);     
-}
-
-for (let index = 0; index < 10; index++) {
-    espacios.push(0);     
-}
-
-inicio();
-
-/*if (espacios[0] === 0) {
-    let auto = [];
-    let patente = AA001002A;
-    let color = rojo;
-    let marca = Volkswagen;
-    let modelo = Bora;
-    date = new Date();
-    horas = date.getUTCHours() - 3; 
-    minutos = date.getUTCMinutes();
-    segundos = date.getUTCSeconds();
-}
-*/
-
-
-
-
-
-function ingresoauto(){
-    let ubicacion = Number(prompt("Ingrese Ubicación"));
-    let patente = prompt("Ingrese Patente"), color = prompt("Ingrese Color"), marca = prompt("Ingrese Marca"), modelo = prompt("Ingrese Modelo"), dia, mes, año, tarifa;
-    
-    date = new Date();
-    horas = date.getUTCHours() - 3; 
-    minutos = date.getUTCMinutes();
-    segundos = date.getUTCSeconds();
-    diaactual = date.getUTCDate();
-    mesactual = date.getUTCMonth() + 1;
-    añoactual = date.getUTCFullYear();
-    auto.push(ubicacion,patente,color,marca,modelo,horas,minutos,segundos,diaactual,mesactual,añoactual);
-    console.log(auto)
-    puntero = 1
-
-    for (let index = ubicacion - 1; index < ubicacion + 9; index++) {
-        espacios[index] = auto[puntero];
-        puntero = puntero + 1;}
-    puntero = 1
-    console.log(espacios)
-    inicio()
+function Auto(tipo, patente, marca, modelo) {
+    this.tipo = tipo,
+        this.patente = patente,
+        this.marca = marca,
+        this.modelo = modelo
 
 }
 
-function saleauto(){
-    let ubicacion = Number(prompt("Ingrese Ubicación"));
-    let tarifa = prompt("Ingrese Tarifa")
-    date = new Date();
-    horas = date.getUTCHours() - 3; 
-    minutos = date.getUTCMinutes();
-    segundos = date.getUTCSeconds();
-    diaactual = date.getUTCDate();
-    mesactual = date.getUTCMonth() + 1;
-    añoactual = date.getUTCFullYear();
+var estacionamiento = {
+    cantidadespacios: 10,
+    espacios: [],
+    inicioarray() {
+        for (let index = 0; index < this.cantidadespacios; index++) {
+            this.espacios.push(0)
 
-    for (let index = ubicacion -1; index < ubicacion + 9; index++) {
-    console.log(espacios[index]);}
-    inicio()
+        }
+    },
+    agregarAuto() {
+        const form = document.getElementsByTagName("form")[0];
+        console.log(form[0])
+        espacio = form[0].value
+        tipo = form[1].value
+        patente = form[2].value
+        marca = form[3].value
+        modelo = form[4].value
+        espacio = new Auto(tipo, patente, marca, modelo)
+        this.espacios[espacio] = espacio
+        console.log(espacio)
+        console.log(this.espacios)
+    }
 }
 
+var monto = 1;
+var date = new Date();
+console.log(estacionamiento.espacios)
 
 
 
-function inicio(){
-let accion = prompt("Ingrese Acción");
-if (accion == "Entra"){
-    ingresoauto()
-} 
 
-if (accion == "Sale"){
-    saleauto();
-}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
