@@ -32,6 +32,9 @@ var estacionamiento = {
         this.espacios[espacio] = new Auto(tipo, patente, marca, modelo, tiempo)
 
         console.log(this.espacios[0])
+
+        /*Comando para crear objeto en JSON*/
+        console.log(JSON.stringify(this.espacios));
     }
 }
 
